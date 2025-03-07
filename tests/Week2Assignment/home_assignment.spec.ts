@@ -30,8 +30,6 @@ test("Flipkart In FireFox", async()=>{
 
     await expect(page).toHaveTitle("Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!");
     console.log(`Page title is ${ await page.title()}`);
-   
     await page.waitForTimeout(3000);
 })
-
 })
