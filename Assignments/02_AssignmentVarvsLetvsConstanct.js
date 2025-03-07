@@ -6,18 +6,16 @@ function getBrowserVersion()
 {
     if(browserVersion.startsWith("Chrome"))
         {
-        var browserVersion = "Chrome-90.0.0"      
-        console.log("Chrome Version is inside if block " + browserVersion);
+          let browserVersion = "Chrome-90.0.0"; // Use let to avoid global shadowing
+          console.log(`Chrome Version inside if block: ${browserVersion}`);  
         }
 
       else
       {
-        let browserVersion = " Edge 91.0.0"
-        console.log("Edge browser version " + browserVersion);
-      }
-      
-      console.log("Chrome Version is outside if block " + browserVersion);
-
+        let browserVersion = "Edge 91.0.0";
+        console.log(`Edge browser version: ${browserVersion}`);
+      }     
+      console.log(`Global Chrome Version: ${browserVersion}`);
 }
 getBrowserVersion();
-console.log(browserVersion);
+console.log(`Outside function: ${browserVersion}`);

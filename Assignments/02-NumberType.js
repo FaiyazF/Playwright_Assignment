@@ -3,7 +3,7 @@
 
 function determineNumberType(number)
 {
-    let type = null;
+    const type = null;
     if(number>0)
         type = `Given number ${number} is Positive number`;
     else if(number<0)
@@ -14,8 +14,8 @@ function determineNumberType(number)
     return type;
 }
 
-console.log(deterMineNumberType(-1));
+console.log(determineNumberType(-1));
 
-console.log(deterMineNumberType(0));
+console.log(determineNumberType(0));
 
-console.log(deterMineNumberType(1));
+console.log(determineNumberType(1));

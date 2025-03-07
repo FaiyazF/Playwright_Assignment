@@ -3,14 +3,15 @@
 
 function launchBrowser(browserName)
 {
-    if(browserName.startsWith("Chrome"))
+    browserName = browserName.toLowerCase();
+    if(browserName.includes("Chrome"))
         console.log(`Browser name is Chrome and Version is 1.1`)
-    else if (browserName.startsWith("Safari"))
+    else if (browserName.includes("Safari"))
         console.log(`Browser name is Safari and Version is 2.1`)
-    else if (browserName.startsWith("Edge"))
-        console.log(`Browser name is Safari and Version is 2.1`)
+    else if (browserName.includes("Edge"))
+        console.log(`Browser name is Edge and Version is 2.1`)
     else
-    console.log(`Browser name \"${browserName}"\ is not available`)
+    console.log(`Browser name "${browserName}" is not available`)
 }
 
 function runTests(testType)
