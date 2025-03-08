@@ -22,7 +22,7 @@ const URL = "https://login.salesforce.com";
 test("1.Create Lead", async ({ page }) => {
 
     //Declaration
-    let LastName = "Faiyaz";
+    let lastName = "Faiyaz";
     let company = "QA_TESTLEAF";
     let salutation = "Mr. ";
     const email = "vidyar@testleaf.com";
@@ -50,12 +50,12 @@ test("1.Create Lead", async ({ page }) => {
     await page.locator("//a[@title='New']").click();
     await page.locator("//button[@name='salutation']").click();
     await page.locator("//span[text()='Mr.']").click();
-    await page.locator("//input[@name='lastName']").fill(LastName);
+    await page.locator("//input[@name='lastName']").fill(lastName);
     await page.locator("//input[@name='Company']").fill(company);
     await page.locator("//button[@name='SaveEdit']").click();
 
     //Verify Lead is created or Not WITH Last name
-    await expect(page.locator("//lightning-formatted-name[@slot='primaryField']")).toHaveText(salutation + LastName);
+    await expect(page.locator("//lightning-formatted-name[@slot='primaryField']")).toHaveText(salutation + lastName);
     console.log("Lead Creation is done");
 })
 
@@ -145,8 +145,8 @@ test("3.Create Individual", async ({ page }) => {
 // Run the test case 3 Create Individual
 test("4.Edit Individual", async ({ page }) => {
     //Declaration
-    let LastName = "Faiyaz123";
-    let FirstName = "AMZNTESTLEAF";
+    let lastName = "Faiyaz123";
+    let firstName = "AMZNTESTLEAF";
 
     //Launching Application
     await page.goto(URL);
@@ -166,7 +166,7 @@ test("4.Edit Individual", async ({ page }) => {
     await page.locator("//mark[text()='Individuals']").click();
 
     //Searching  Individual with last Name
-    await page.locator("//input[@name='Individual-search-input']").fill(LastName);
+    await page.locator("//input[@name='Individual-search-input']").fill(lastName);
     await page.keyboard.press('Enter');
     const btnEdit =  page.locator("//a[@data-refid='recordId']/../../..//td//a[@role='button']");
     await btnEdit.nth(0).click();
@@ -176,7 +176,7 @@ test("4.Edit Individual", async ({ page }) => {
     page.waitForTimeout(2000);
     await page.locator("//a[text()='Mr.']").click();
     await page.locator("//input[@placeholder='First Name']").clear();
-    await page.locator("//input[@placeholder='First Name']").fill(FirstName);
+    await page.locator("//input[@placeholder='First Name']").fill(firstName);
     await page.locator("//div[contains(@class,'button-container slds')]//button[@title='Save']").click();
 
     //Verify lead firstname is updated
