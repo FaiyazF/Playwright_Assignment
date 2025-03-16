@@ -182,6 +182,6 @@ test("4.Edit Individual", async ({ page }) => {
     //Verify lead firstname is updated
     const txt_firstName =  page.locator("//a[@data-refid='recordId']");
     let name = await txt_firstName.nth(0).innerText();
-    await expect(name.split(" ")[0]).toBe(FirstName)
+    await expect(name.split(" ")[0]).toBe(firstName)
     console.log("Individual Update is done and Firstname is verified");
 })
