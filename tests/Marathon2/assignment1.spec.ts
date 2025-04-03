@@ -19,7 +19,7 @@ console.log(firstName+lastName);
 
 test.describe.serial("Create, Update Lead using API and Delete Lead using UI", async()=>{
 
-    test("Generate Token", async({request})=>
+    test("Generate Token- API", async({request})=>
         {
        const response = await request.post(endPointUrl,
         {
@@ -45,8 +45,7 @@ test.describe.serial("Create, Update Lead using API and Delete Lead using UI", a
 
     })
 
-
-    test("Create Lead", async({request})=>{
+    test("Create Lead-API", async({request})=>{
 
         //Post Request
         const response = await request.post(`${instanceUrl}${createLeadEndPoint}`,{
@@ -74,7 +73,7 @@ test.describe.serial("Create, Update Lead using API and Delete Lead using UI", a
 
     })
 
-    test("Update Lead", async({request})=>{
+    test("Update Lead-API", async({request})=>{
 
         const response = await request.patch(`${instanceUrl}${createLeadEndPoint}/${leadId}`,{
 
@@ -92,8 +91,7 @@ test.describe.serial("Create, Update Lead using API and Delete Lead using UI", a
         console.log(`Lead is updated successfully Thorugh API and Lead ID is ${leadId}`);
     })
 
-
-    test("Delete Lead using UI App", async({page}) => {
+    test("Delete Lead- UI App", async({page}) => {
     
         const URL = "https://login.salesforce.com";
     
@@ -124,9 +122,9 @@ test.describe.serial("Create, Update Lead using API and Delete Lead using UI", a
     
         //Navigate to the Leads dashboard tab from the App Launcher
         await page.locator(btn_ToggleMenu).click();
-
+        await page.waitForTimeout(1000);
         await page.locator(lnk_ViewAll).click();
-        await page.waitForTimeout(2000);
+        await page.waitForTimeout(1000);
         await waitForLoadState(page);
         await expect(page.locator(app_Launcher)).toBeVisible();
         console.log("User is on App Launcher Window and Verified the App Launcher");
@@ -137,7 +135,7 @@ test.describe.serial("Create, Update Lead using API and Delete Lead using UI", a
         await waitForLoadState(page);
         await page.locator("//mark[text()='Leads']").click();
         await expect(page.locator(tab_Leads)).toBeVisible();
-        console.log("User is on Leads Dashboard Tab and Verified the Leads Tab");
+        console.log("User is on Leads Dashboard and Verified the Leads dashboard");
     
     
        //Search for the Lead
@@ -174,7 +172,7 @@ test.describe.serial("Create, Update Lead using API and Delete Lead using UI", a
         //Verify No Items Found
             await expect(page.locator("//span[text()='No items to display.']")).toBeVisible();
             console.log(`Lead ${firstName} ${lastName} is not displayed because Lead is deleted`);
-            console.log(`Lead is deleted successfully Thorugh UI Lead name is ${firstName} ${lastName}`);
+            console.log(`Lead is deleted successfully Thorugh UI and Lead name is ${firstName} ${lastName}`);
         
 
     })
